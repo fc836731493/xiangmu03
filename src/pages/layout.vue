@@ -3,10 +3,10 @@
      <div class="index-left">
        <div class="index-left-block">
          <h2>全部产品</h2>
-         <div v-for="(title,index) in productList">
+         <div v-for="(title,index) in productList" :key="index">
              <h3>{{ title.category }}</h3>
              <ul>
-                 <li v-for="item in title.list">
+                 <li v-for="(item,index) in title.list" :key="index">
                      <a target="_blank" :href="item.url">{{ item.name }}</a>
                      <span v-if="item.hot" class="hot-tag">HOT</span>
                  </li>
@@ -17,7 +17,7 @@
        <div class="index-left-block">
            <h2>TOP10电影排行榜</h2>
                <ul>
-                   <li v-for="movies in  movielist">
+                   <li v-for="(movies,index) in  movielist" :key="index">
                        <a target="_blank" :href="movies.alt">{{ movies.title }}</a>
                    </li>
                </ul>
@@ -57,7 +57,7 @@
                           <h2>{{ item.title}} </h2>
                           <p> {{item.desc}} </p>
                           <div class="index-board-button">
-                              <router-link target="_blank" class="button" to="proddetails" >立即购买</router-link>                
+                              <router-link target="_blank" class="button" :to="{path:'/proddetails/'+item.tag}" >立即购买</router-link>                
                           </div>
                        </div>          
                    </div>            

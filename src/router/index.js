@@ -20,25 +20,24 @@ export default new Router({
       path: "/proddetails",
       name: "Proddetails",
       component: Proddetails,
-
       children:[
         {
-          path: "/car",
+          path: "/proddetails/car",
           name: "Car",
           component:Car
         },
         {
-          path: "/earth",
+          path: "/proddetails/earth",
           name: "Earth",
           component:Earth
         },
         {
-          path: "/hill",
+          path: "/proddetails/hill",
           name: "Hill",
           component:Hill
         },
         {
-          path: "/loud",
+          path: "/proddetails/loud",
           name: "Loud",
           component:Loud
         }

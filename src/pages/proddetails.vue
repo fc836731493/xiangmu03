@@ -2,16 +2,16 @@
   <div class="detail-wrap">
     <div class="detail-left">
       <div class="product-board">
-           
-           <ul v-for="(list,index) in proList" :key="index">
-             <img src="list.src" alt="">
-             <router-link active-class="active"  tag="li"  :to="{path: list.tag}">
+          <img :src="getUrl" alt="">
+           <ul>
+             <router-link v-for="(list,index) in proList" :key="index" active-class="active"  tag="li"  :to="{path:'/proddetails/'+list.tag}">
                  {{ list.name }}     
              </router-link>
            </ul>
       </div>
     </div>
     <div class="detail-right">
+      
        <router-view></router-view>
     </div>
    </div>
@@ -22,6 +22,12 @@ export default {
    name:"proddetails",
    data(){
        return{
+        imgUrl:{
+            "/proddetails/earth":require("../assets/images/1.png"),
+            "/proddetails/loud":require("../assets/images/2.png"),
+            "/proddetails/car":require("../assets/images/3.png"),
+            "/proddetails/hill":require("../assets/images/4.png"),
+        },
         proList:[
           {
             name:"开放产品",
@@ -48,6 +54,12 @@ export default {
             tag:"hill"
           }
         ]
+       }
+   },
+   computed:{
+       getUrl(){
+           console.log(this.$route.path);
+           return this.imgUrl[this.$route.path];
        }
    }
 
